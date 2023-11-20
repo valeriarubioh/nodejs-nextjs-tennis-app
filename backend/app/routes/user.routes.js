@@ -19,13 +19,6 @@ module.exports = function(app) {
   );
 
   app.put("/api/v1/userDetails", [authJwt.verifyToken, authJwt.isAdmin], controller.modifyUserDetails)
-  // app.post("/api/v1/userDetails", [authJwt.verifyToken], controller.createUserDetails)
-
-  /*app.get(
-    "/api/test/mod",
-    [authJwt.verifyToken, authJwt.isModerator],
-    controller.moderatorBoard
-  );*/
 
   app.get(
     "/api/test/admin",

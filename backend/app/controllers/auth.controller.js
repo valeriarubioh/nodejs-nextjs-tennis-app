@@ -2,6 +2,7 @@ const db = require("../models");
 const config = require("../config/auth.config");
 const User = db.user;
 const Role = db.role;
+const UserDetail = db.userDetail;
 
 const Op = db.Sequelize.Op;
 
@@ -25,13 +26,29 @@ exports.signup = (req, res) => {
           }
         }).then(roles => {
           user.setRoles(roles).then(() => {
-            res.send({ message: "User registered successfully!" });
+            UserDetail.create({
+              userId: user.id,
+              gender: req.body.gender,
+              birthdate: req.body.birthdate,
+              country: req.body.country,
+              contact_number: req.body.contact_number,
+            }).then(()=>{
+              res.send({ message: "User registered successfully!" });
+            })            
           });
         });
       } else {
         // user role = 1
         user.setRoles([1]).then(() => {
-          res.send({ message: "User registered successfully!" });
+          UserDetail.create({
+            userId: user.id,
+            gender: req.body.gender,
+            birthdate: req.body.birthdate,
+            country: req.body.country,
+            contact_number: req.body.contact_number,
+          }).then(()=>{
+            res.send({ message: "User registered successfully!" });
+          });
         });
       }
     })
