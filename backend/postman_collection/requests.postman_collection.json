@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "a5585e47-bdd0-422f-bcf1-833dc92317c3",
+		"name": "jwt express",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14432994"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiaWF0IjoxNjk4NzgwMTI5LCJleHAiOjE2OTg4NjY1Mjl9.5YCGwHT8BlbT54fGp07B-vrCqD6vAsCYpffO7PFtqC0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"vale2\",\r\n    \"email\": \"vale2@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"roles\":[\"admin\",\"user\"],\r\n    \"gender\": \"M\",\r\n    \"birthdate\": \"06-11-1996\",\r\n    \"country\": \"CO\",\r\n    \"contact_number\": \"314141414\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/auth/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "public",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiaWF0IjoxNjk4NzgwMTI5LCJleHAiOjE2OTg4NjY1Mjl9.5YCGwHT8BlbT54fGp07B-vrCqD6vAsCYpffO7PFtqC0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"val\",\r\n    \"email\": \"vale@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"roles\":[\"admin\",\"user\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/test/all",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"test",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "private",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiaWF0IjoxNjk4NzgwMTI5LCJleHAiOjE2OTg4NjY1Mjl9.5YCGwHT8BlbT54fGp07B-vrCqD6vAsCYpffO7PFtqC0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"val\",\r\n    \"email\": \"vale@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"roles\":[\"admin\",\"user\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/test/user",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"test",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiaWF0IjoxNjk4NzgwMTI5LCJleHAiOjE2OTg4NjY1Mjl9.5YCGwHT8BlbT54fGp07B-vrCqD6vAsCYpffO7PFtqC0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"val\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/auth/signin",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create tournament",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAwNTM2MjU1LCJleHAiOjE3MDA2MjI2NTV9.Y6BWBqBOU9GgOrLYqrdcotmri39aEMt-w2bmJICA1z4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"First tournament\",\r\n    \"tournament_start_date\": \"01-01-1990\",\r\n    \"tournament_end_date\": \"01-01-2000\",\r\n    \"place\": \"Cali\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/tournaments",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"tournaments"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
