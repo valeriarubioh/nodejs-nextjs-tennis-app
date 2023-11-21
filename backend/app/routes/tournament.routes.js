@@ -27,10 +27,14 @@ module.exports = function (app) {
     [authJwt.verifyToken, authJwt.isAdmin],
     controller.deleteTournamentById
   );
-    //registrar user
+  //registrar user
   app.post(
     "/api/v1/tournaments/:id/register",
     [authJwt.verifyToken],
     controller.registerUserInTournament
+  );
+  app.get("/api/v1/tournaments/:id/users",
+  [authJwt.verifyToken, authJwt.isAdmin],
+  controller.getUsersRegisteredInTournaments
   );
 };
