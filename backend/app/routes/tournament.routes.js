@@ -37,4 +37,9 @@ module.exports = function (app) {
   [authJwt.verifyToken, authJwt.isAdmin],
   controller.getUsersRegisteredInTournaments
   );
+  app.delete(
+    "/api/v1/tournaments/:id/users/:idUser",
+    [authJwt.verifyToken, authJwt.isAdmin],
+    controller.deleteUserRegisteredInTournament
+  );
 };

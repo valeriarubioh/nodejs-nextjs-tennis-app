@@ -119,9 +119,32 @@ exports.getUsersRegisteredInTournaments = async (req,res)=>{
       return res.status(404).send({ message: "Tournament not found." });
     }
     const users = await tournament.getUsers();
-    res.status(200).send(users);
+    const usersResponse = users.map((user) => {
+      return { id: user.id, username: user.username, email: user.email };
+    });
+    res.status(200).send(usersResponse);
 
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
 };
+
+exports.deleteUserRegisteredInTournament = async (req,res)=>{
+  try {
+    const tournamentId = req.params.id;
+    const tournament = await Tournament.findByPk(tournamentId);
+    const userId = req.params.idUser;
+    const user = await User.findByPk(userId);
+    if (!tournament) {
+      return res.status(404).send({ message: "Tournament not found." });
+    }
+    const tournamentHasUser = await tournament.hasUser(user);
+    if (!tournamentHasUser) {
+      return res.status(400).send({ message: "User is not registered in the tournament." });
+    }
+    await tournament.removeUser(user);
+    res.status(200).send({ message: "User removed from the tournament successfully." });
+  } catch (err) {
+    res.status(500).send({ message: err.message });
+  }
+}
