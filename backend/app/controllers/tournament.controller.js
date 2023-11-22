@@ -95,24 +95,16 @@ exports.registerUserInTournament = async (req, res) => {
   try {
     const userId = req.userId;
     const tournamentId = req.params.id;
-    const isRegistered = await Tournament.findOne({
-      where: { id: tournamentId, users: userId },
-    });
-    if (isRegistered) {
-      return res.status(400).send({ message: "User already registered in the tournament." });
-    }
+    const user = await User.findByPk(userId);
     const tournament = await Tournament.findByPk(tournamentId);
     if (!tournament) {
       return res.status(404).send({ message: "Tournament not found." });
     }
-
-    const user = await User.findByPk(userId);
-    if (!user) {
-      return res.status(404).send({ message: "User not found." });
+    const tournamentHasUser = await tournament.hasUser(user);
+    if (tournamentHasUser) {
+      return res.status(400).send({ message: "User already registered in the tournament." });
     }
-
-    await tournament.add(user);
-
+    await tournament.addUser(user);
     res.status(200).send({ message: "User registered in the tournament successfully." });
   } catch (err) {
     res.status(500).send({ message: err.message });
@@ -121,15 +113,12 @@ exports.registerUserInTournament = async (req, res) => {
 
 exports.getUsersRegisteredInTournaments = async (req,res)=>{
   try {
-    if (!req.isAdmin) {
-      return res.status(403).send({ message: "Require Admin Role!" });
-    }
     const tournamentId = req.params.id;
     const tournament = await Tournament.findByPk(tournamentId);
     if (!tournament) {
       return res.status(404).send({ message: "Tournament not found." });
     }
-    const users = await tournament.get(users);
+    const users = await tournament.getUsers();
     res.status(200).send(users);
 
   } catch (err) {
