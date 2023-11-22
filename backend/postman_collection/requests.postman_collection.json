@@ -186,6 +186,194 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get tournament",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAwNTM2MjU1LCJleHAiOjE3MDA2MjI2NTV9.Y6BWBqBOU9GgOrLYqrdcotmri39aEMt-w2bmJICA1z4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"First tournament\",\r\n    \"tournament_start_date\": \"01-01-1990\",\r\n    \"tournament_end_date\": \"01-01-2000\",\r\n    \"place\": \"Cali\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/tournaments/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"tournaments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update tournament",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAwNTM2MjU1LCJleHAiOjE3MDA2MjI2NTV9.Y6BWBqBOU9GgOrLYqrdcotmri39aEMt-w2bmJICA1z4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tournament_start_date\": \"01-01-1992\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/tournaments/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"tournaments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete tournament",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAwNTM2MjU1LCJleHAiOjE3MDA2MjI2NTV9.Y6BWBqBOU9GgOrLYqrdcotmri39aEMt-w2bmJICA1z4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tournament_start_date\": \"01-01-1992\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/tournaments/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"tournaments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register logged JWT user in tournament",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAwNTM2MjU1LCJleHAiOjE3MDA2MjI2NTV9.Y6BWBqBOU9GgOrLYqrdcotmri39aEMt-w2bmJICA1z4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/tournaments/2/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"tournaments",
+						"2",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get users by tournament (Only Admin)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAwNjIyMjQzLCJleHAiOjE3MDA3MDg2NDN9.uFDbUn9Ql0K9gUs9Hi1Wvet2ACfh39p8Jra6qf5AQT0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/tournaments/2/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"tournaments",
+						"2",
+						"users"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
